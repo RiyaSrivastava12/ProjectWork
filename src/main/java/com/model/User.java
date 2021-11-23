@@ -18,7 +18,9 @@ public class User {
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	List<Doctor> doctors;
-//	List<Patient> patients;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	List<PatientPersonalDetails> patients;
 	
 	@OneToMany(cascade = CascadeType.ALL)
     List<Finance> finances;
