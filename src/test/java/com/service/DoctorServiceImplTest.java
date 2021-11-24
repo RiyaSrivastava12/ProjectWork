@@ -54,7 +54,6 @@ class DoctorServiceImplTest {
 	}
 
 	@Test
-	//@Disabled
 	void testGetDoctorById() throws Throwable {
 		
 		  Doctor c1=new Doctor(); 

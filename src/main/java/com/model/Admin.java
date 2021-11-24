@@ -17,6 +17,9 @@ public class Admin {
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	List<Finance> finances;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	List<Doctor> doctors;
 /*	
 	@OneToMany
 	List<Doctor> doctors;
@@ -42,14 +45,14 @@ public class Admin {
 		this.finances = finances;
 	}
 	
-/*	
+	
 	public List<Doctor> getDoctors() {
 		return doctors;
 	}
 	public void setDoctors(List<Doctor> doctors) {
 		this.doctors = doctors;
 	}
-	*/
+	
 	@Override
 	public String toString() {
 		return "Admin [Id=" + Id + ", aname=" + aname + "]";
