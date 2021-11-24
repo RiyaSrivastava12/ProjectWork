@@ -1,25 +1,45 @@
 package com.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Doctor {
 
 	@Id
 	@GeneratedValue
-	private int dId;
+	private int Id;
+	
+	@NotBlank(message="Name is required.")
 	private String dname;
+	@NotBlank(message="specialization is required.")
 	private String specialization;
 	private String qualification;
 	private String availability;
 	
-	public int getdId() {
-		return dId;
+	
+/*	@ManyToOne
+	@JoinColumn(name="id")
+	Admin admin1;
+	
+	
+    public Admin getAdmin1() {
+		return admin1;
 	}
-	public void setdId(int dId) {
-		this.dId = dId;
+	public void setAdmin1(Admin admin1) {
+		this.admin1 = admin1;
+	}
+*/	
+	public int getId() {
+		return Id;
+	}
+	public void setId(int Id) {
+		this.Id = Id;
 	}
 	public String getDname() {
 		return dname;
@@ -47,7 +67,7 @@ public class Doctor {
 	}
 	@Override
 	public String toString() {
-		return "Doctor [dId=" + dId + ", dname=" + dname + ", specialization=" + specialization + ", qualification="
+		return "Doctor [dId=" + Id + ", dname=" + dname + ", specialization=" + specialization + ", qualification="
 				+ qualification + ", availability=" + availability + "]";
 	}
 	

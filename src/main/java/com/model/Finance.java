@@ -1,19 +1,28 @@
 package com.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Finance {
 	
 	@Id
 	@GeneratedValue
-	private int bId;
+	private int Id;
 	private double docFees;
 	private double regFees;
 	private double medAmount;
 	
+/*
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="jid",referencedColumnName = "id")
+	//@JsonBackReference
+	Admin admin;
+*/	
 	public double getDocFees() {
 		return docFees;
 	}
@@ -32,17 +41,28 @@ public class Finance {
 	public void setMedAmount(double medAmount) {
 		this.medAmount = medAmount;
 	}
-	public int getbId() {
-		return bId;
+	public int getId() {
+		return Id;
 	}
-	public void setbId(int bId) {
-		this.bId = bId;
+	public void setId(int Id) {
+		this.Id = Id;
 	}
+	/*
+	
+	public Admin getAdmin() {
+		return admin;
+	}
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
+	
+*/	
 	@Override
 	public String toString() {
-		return "Finance [bId=" + bId + ", docFees=" + docFees + ", regFees=" + regFees + ", medAmount=" + medAmount
+		return "Finance [bId=" + Id + ", docFees=" + docFees + ", regFees=" + regFees + ", medAmount=" + medAmount
 				+ "]";
 	}
+	
 	
 	}
 

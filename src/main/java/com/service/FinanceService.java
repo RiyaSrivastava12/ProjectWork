@@ -49,7 +49,7 @@ public class FinanceService {
 	}
 
 	public Finance updateBill(Finance f) throws Throwable {
-		int id=f.getbId();
+		int id=f.getId();
 		Supplier s1= ()->new ResourceNotFoundException("Bill Does not exist in the database");
 		Finance f2=financeRepo.findById(id).orElseThrow(s1);
 		f2.setDocFees(f2.getDocFees());

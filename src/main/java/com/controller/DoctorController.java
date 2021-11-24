@@ -26,7 +26,6 @@ public class DoctorController {
 	@Autowired
 	DoctorService doctorservice;
 	
-	
 	@PostMapping("/addDoctor")
 	public ResponseEntity<Doctor> addDoctor(@RequestBody Doctor d)
 	{

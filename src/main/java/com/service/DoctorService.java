@@ -50,7 +50,7 @@ public class DoctorService {
 	}
 
 	public Doctor updateDoctor(Doctor c) throws Throwable {
-		int id=c.getdId();
+		int id=c.getId();
 		
 		Supplier s1= ()->new ResourceNotFoundException("Doctor Does not exist in the database");
 		Doctor c1=repo.findById(id).orElseThrow(s1);
