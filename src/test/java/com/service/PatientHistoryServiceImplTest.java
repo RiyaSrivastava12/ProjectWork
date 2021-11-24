@@ -33,18 +33,16 @@ class PatientHistoryServiceImplTest {
 	@Test
 	void testGetPatientHistorys() {
 		PatientHistory c1=new PatientHistory();
-		c1.setphId(1);
+		c1.setId(1);
 		c1.setDisease("Diabetes");
 		c1.setdAdvice("Take medicine");
 		c1.setDiet("Green vegetables");
-		c1.setTreatment("Medicine");
-		
+	
 		PatientHistory c2=new PatientHistory();
-		c1.setphId(2);
+		c1.setId(2);
 		c1.setDisease("Covid");
 		c1.setdAdvice("Take medicine");
 		c1.setDiet("Vitamin C");
-		c1.setTreatment("Medicine");
 		
 		
 		List<PatientHistory> doctorList = new ArrayList<>();
@@ -61,11 +59,11 @@ class PatientHistoryServiceImplTest {
 	void testGetPatientHistoryById() throws Throwable {
 		
 		  PatientHistory c1=new PatientHistory(); 
-		  c1.setphId(2);
+		  c1.setId(2);
 			c1.setDisease("Covid");
 			c1.setdAdvice("Take medicine");
 			c1.setDiet("Vitamin C");
-			c1.setTreatment("Medicine");
+			
 		 
 		
 		Optional<PatientHistory> c2=Optional.of(c1);
@@ -78,11 +76,11 @@ class PatientHistoryServiceImplTest {
 	@Test
 	void testAddPatientHistory() {
 		PatientHistory c1=new PatientHistory();
-		c1.setphId(2);
+		c1.setId(2);
 		c1.setDisease("Covid");
 		c1.setdAdvice("Take medicine");
 		c1.setDiet("Vitamin C");
-		c1.setTreatment("Medicine");
+		
 	Mockito.when(repo.save(c1)).thenReturn(c1);
 		
 		assertThat(patientservice.addPatientHistory(c1)).isEqualTo(c1);
@@ -91,11 +89,11 @@ class PatientHistoryServiceImplTest {
 	@Test
 	void testUpdatePatientHistory() throws Throwable {
 		PatientHistory c1=new PatientHistory();
-		c1.setphId(2);
+		c1.setId(2);
 		c1.setDisease("Covid");
 		c1.setdAdvice("Take medicine");
 		c1.setDiet("Vitamin C");
-		c1.setTreatment("Medicine");
+		
 		Optional<PatientHistory> c2=Optional.of(c1);
 		
 		Mockito.when(repo.findById(1)).thenReturn(c2);
@@ -105,23 +103,23 @@ class PatientHistoryServiceImplTest {
 		c1.setDisease("Diabetes");
 		c1.setdAdvice("Take medicine on time");
 		c1.setDiet("Vitamin");
-		c1.setTreatment("Medicines");
+		
 		assertThat(patientservice.updatePatientHistory(c1)).isEqualTo(c1);
 	}
 
 	@Test
 	void testDeletePatientHistory() {
 		PatientHistory c1=new PatientHistory();
-		c1.setphId(2);
+		c1.setId(2);
 		c1.setDisease("Covid");
 		c1.setdAdvice("Take medicine");
 		c1.setDiet("Vitamin C");
-		c1.setTreatment("Medicine");
+		
 		Optional<PatientHistory> c2=Optional.of(c1);
 		
 		Mockito.when(repo.findById(1)).thenReturn(c2);
-		 Mockito.when(repo.existsById(c1.getphId())).thenReturn(false);
-		   assertFalse(repo.existsById(c1.getphId()));
+		 Mockito.when(repo.existsById(c1.getId())).thenReturn(false);
+		   assertFalse(repo.existsById(c1.getId()));
 	}
 
 	/*

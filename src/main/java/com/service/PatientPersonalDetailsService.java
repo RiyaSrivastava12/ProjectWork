@@ -8,6 +8,7 @@ import java.util.Optional;
 import java.util.function.IntPredicate;
 import java.util.function.Supplier;
 
+import com.advices.PatientNotFoundException;
 import com.advices.ResourceNotFoundException;
 import com.model.HealthInsurancePolicy;
 import com.model.PatientPersonalDetails;
@@ -55,7 +56,7 @@ public class PatientPersonalDetailsService {
 	public PatientPersonalDetails updatePatientPersonalDetails(PatientPersonalDetails c) throws Throwable {
 		int id = c.getId();
 
-		Supplier s1 = () -> new ResourceNotFoundException("PatientPersonalDetails Does not exist in the database");
+		Supplier s1 = () -> new PatientNotFoundException("PatientPersonalDetails Does not exist in the database");
 		PatientPersonalDetails c1 = patientDao.findById(id).orElseThrow(s1);
 
 		c1.setId(c.getId());

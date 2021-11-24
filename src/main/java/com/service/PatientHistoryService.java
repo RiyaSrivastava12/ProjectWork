@@ -51,7 +51,7 @@ public class PatientHistoryService {
 	}
 
 	public PatientHistory updatePatientHistory(PatientHistory ph) throws Throwable {
-		int id=ph.getphId();
+		int id=ph.getId();
 		
 		Supplier s1= ()->new ResourceNotFoundException("PatientHistory Does not exist in the database");
 		PatientHistory c1=repo.findById(id).orElseThrow(s1);
@@ -59,7 +59,7 @@ public class PatientHistoryService {
 		c1.setDisease(ph.getDisease());
 		c1.setdAdvice(ph.getdAdvice());
 		c1.setDiet(ph.getDiet());
-		c1.setTreatment(ph.getTreatment());
+	//	c1.setTreatment(ph.getTreatment());
 			repo.save(c1);
 			return c1;	
 	}

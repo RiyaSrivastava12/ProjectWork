@@ -6,6 +6,7 @@ import java.util.function.Supplier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.advices.AdminNotFoundException;
 import com.advices.ResourceNotFoundException;
 import com.model.Admin;
 import com.repository.AdminRepository;
@@ -32,7 +33,7 @@ public class AdminService {
 	}
 
 	public Admin getAdminById(int cid) throws Throwable {
-		Supplier s1= ()->new ResourceNotFoundException("Admin Does not exist in the database");
+		Supplier s1= ()->new AdminNotFoundException("Admin Does not exist in the database");
 		Admin c=repo.findById(cid).orElseThrow(s1);
 		return c;
 	}
@@ -53,7 +54,7 @@ public class AdminService {
 	public Admin updateAdmin(Admin c) throws Throwable {
 		int id=c.getId();
 		
-		Supplier s1= ()->new ResourceNotFoundException("Admin Does not exist in the database");
+		Supplier s1= ()->new AdminNotFoundException("Admin Does not exist in the database");
 		Admin c1=repo.findById(id).orElseThrow(s1);
 		
 		c1.setAname(c.getAname());

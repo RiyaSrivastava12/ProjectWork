@@ -1,28 +1,47 @@
 package com.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class PatientHistory {
 	
 	@Id
 	@GeneratedValue
-	private int phId;
+	private int Id;
+	@NotBlank(message="This is a required field.")
 	private String disease;
+	@NotBlank(message="This is a required field.")
 	private String dAdvice;
+	@NotBlank(message="This is a required field.")
 	private String diet;
-	private String treatment;
 	
 	
-	public int getphId() {
-		return phId;
+	@OneToOne(targetEntity=Treatment.class,cascade = CascadeType.ALL)
+	private Treatment treatment;
+	
+	public Treatment getTreatment() {
+		return treatment;
 	}
-	public void setphId(int phId) {
-		this.phId=phId;
+	public void setTreatment(Treatment treatment) {
+		this.treatment = treatment;
 	}
-	public String getDisease() {
+	
+	
+		public int getId() {
+		return Id;
+	}
+	public void setId(int id) {
+		Id = id;
+	}
+		public String getDisease() {
 		return disease;
 	}
 	public void setDisease(String disease) {
@@ -40,16 +59,10 @@ public class PatientHistory {
 	public void setDiet(String diet) {
 		this.diet = diet;
 	}
-	public String getTreatment() {
-		return treatment;
-	}
-	public void setTreatment(String treatment) {
-		this.treatment = treatment;
-	}
+	
 	@Override
 	public String toString() {
-		return "PatientHistory [disease=" + disease + ", dAdvice=" + dAdvice + ", diet=" + diet + ", treatment="
-				+ treatment + "]";
+		return "PatientHistory [disease=" + disease + ", dAdvice=" + dAdvice + ", diet=" + diet  + "]";
 	}
 	
 	

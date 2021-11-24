@@ -1,40 +1,51 @@
 package com.model;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Doctor {
 
+	@NotNull
 	@Id
 	@GeneratedValue
 	private int Id;
 	
 	@NotBlank(message="Name is required.")
 	private String dname;
+	
 	@NotBlank(message="specialization is required.")
 	private String specialization;
+	
+	@NotBlank(message="Qualification is required.")
 	private String qualification;
+	
+	@NotBlank(message="Availability is required.")
 	private String availability;
 	
-	
-/*	@ManyToOne
-	@JoinColumn(name="id")
-	Admin admin1;
-	
-	
-    public Admin getAdmin1() {
-		return admin1;
-	}
-	public void setAdmin1(Admin admin1) {
-		this.admin1 = admin1;
-	}
+/*	
+	@JsonBackReference(value = "2")
+	@OneToOne(targetEntity = Treatment.class, mappedBy = "treatment")
+	private Treatment treatment;
 */	
+/*	@ManyToOne(targetEntity = Admin.class, fetch = FetchType.LAZY)
+	@JoinColumn(name = "admin_id", nullable = false)
+	@JsonBackReference("4")
+	private Admin admin;
+*/	
+	
+	/*
+	@JoinColumn(name="jid",referencedColumnName = "Id")
+	//@JsonBackReference
+	Admin admin;
+	*/
+   
+	
+
 	public int getId() {
 		return Id;
 	}

@@ -1,10 +1,10 @@
 package com.model;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+
 
 @Entity
 public class Treatment {
@@ -12,11 +12,23 @@ public class Treatment {
 	@Id
 	@GeneratedValue
 	private int tid;
+	@NotBlank(message="This is a required field.")
 	private String reports;
+	@NotBlank(message="This is a required field.")
 	private String medicines;
+	@NotBlank(message="This is a required field.")
 	private String description;
 	
-	//List<Doctor> doctors;
+	/*
+	@OneToOne(cascade = CascadeType.ALL)
+	List<Doctor> doctors;
+	*/
+/*	
+	@JsonManagedReference(value = "2")
+	@OneToOne(targetEntity = Doctor.class, cascade = CascadeType.ALL)
+	@JoinColumn(name = "doctor_id")
+	private Doctor doctor1;
+*/	
 	
 	public int getTid() {
 		return tid;
@@ -44,6 +56,15 @@ public class Treatment {
 		this.description = description;
 	}
 	
+	
+/*	
+	public List<Doctor> getDoctors() {
+		return doctors;
+	}
+	public void setDoctors(List<Doctor> doctors) {
+		this.doctors = doctors;
+	}
+	*/
 	@Override
 	public String toString() {
 		return "Treatment [tid=" + tid +  ", reports=" + reports

@@ -6,6 +6,9 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Admin {
@@ -13,17 +16,18 @@ public class Admin {
 	@javax.persistence.Id
 	@GeneratedValue
 	private int Id;
+	@NotBlank(message="Name is required.")
 	private String aname;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	List<Finance> finances;
+   @OneToMany(cascade = CascadeType.ALL)
+	List<Doctor> doctors;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	List<Doctor> doctors;
-/*	
-	@OneToMany
-	List<Doctor> doctors;
-*/	
+  
+	/*
+	@JsonManagedReference("4")
+	@OneToMany(targetEntity = Doctor.class, cascade = CascadeType.ALL, mappedBy = "admin")
+	private List<Doctor> doctors;
+*/
 	public int getId() {
 		return Id;
 	}
@@ -37,14 +41,14 @@ public class Admin {
 		this.aname = aname;
 	}
 	
-	
+/*	
 	public List<Finance> getFinances() {
 		return finances;
 	}
 	public void setFinances(List<Finance> finances) {
 		this.finances = finances;
 	}
-	
+*/
 	
 	public List<Doctor> getDoctors() {
 		return doctors;

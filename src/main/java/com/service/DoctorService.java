@@ -6,6 +6,7 @@ import java.util.function.Supplier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.advices.DoctorNotFoundException;
 import com.advices.ResourceNotFoundException;
 import com.model.Doctor;
 import com.repository.DoctorRepository;
@@ -31,7 +32,7 @@ public class DoctorService {
 	}
 
 	public Doctor getDoctorById(int cid) throws Throwable {
-		Supplier s1= ()->new ResourceNotFoundException("Doctor Does not exist in the database");
+		Supplier s1= ()->new DoctorNotFoundException("Doctor Does not exist in the database");
 		Doctor c=repo.findById(cid).orElseThrow(s1);
 		return c;
 	}
@@ -52,7 +53,7 @@ public class DoctorService {
 	public Doctor updateDoctor(Doctor c) throws Throwable {
 		int id=c.getId();
 		
-		Supplier s1= ()->new ResourceNotFoundException("Doctor Does not exist in the database");
+		Supplier s1= ()->new DoctorNotFoundException("Doctor Does not exist in the database");
 		Doctor c1=repo.findById(id).orElseThrow(s1);
 		
 		c1.setDname(c.getDname());

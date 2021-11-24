@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Finance {
@@ -13,7 +14,9 @@ public class Finance {
 	@Id
 	@GeneratedValue
 	private int Id;
+	@NotBlank(message="Doctor fees is required.")
 	private double docFees;
+	@NotBlank(message="Registration fees is required.")
 	private double regFees;
 	private double medAmount;
 	
