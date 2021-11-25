@@ -19,7 +19,7 @@ import com.repository.HealthInsurancePolicyRepository;
 import com.service.HealthInsurancePolicyService;
 
 @SpringBootTest
-class HealthInsurancePolicyServiceImpTests {
+class HealthInsurancePolicyTest {
 	
 	private static final Object HealthInsurancePolicy = null;
 

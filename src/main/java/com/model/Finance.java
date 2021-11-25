@@ -18,6 +18,7 @@ public class Finance {
 	private double docFees;
 	@NotBlank(message="Registration fees is required.")
 	private double regFees;
+	@NotBlank(message="Medicine Amount is required.")
 	private double medAmount;
 	
 /*

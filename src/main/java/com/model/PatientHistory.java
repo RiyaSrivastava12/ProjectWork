@@ -6,6 +6,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
@@ -23,18 +24,21 @@ public class PatientHistory {
 	@NotBlank(message="This is a required field.")
 	private String diet;
 	
-	
+	/*
 	@OneToOne(targetEntity=Treatment.class,cascade = CascadeType.ALL)
+	@JoinColumn(name = "treatment_id")
 	private Treatment treatment;
+*/
 	
-	public Treatment getTreatment() {
-		return treatment;
+	@OneToMany(cascade = CascadeType.ALL)
+	List<Treatment> treatments;
+	
+		public List<Treatment> getTreatments() {
+		return treatments;
 	}
-	public void setTreatment(Treatment treatment) {
-		this.treatment = treatment;
+	public void setTreatments(List<Treatment> treatments) {
+		this.treatments = treatments;
 	}
-	
-	
 		public int getId() {
 		return Id;
 	}

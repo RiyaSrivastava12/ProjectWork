@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="patient")
@@ -20,11 +21,17 @@ public class PatientPersonalDetails {
 	@Id
 	@GeneratedValue
 	private int Id;
+	@NotBlank(message="Patient Name is required.")
 	private String pName;
+	@NotBlank(message="Patient Age is required.")
 	private int pAge;
+	@NotBlank(message="Phone number is required.")
 	private long phoneNo;
+	@NotBlank(message="Gender is required.")
 	private String gender;
+	@NotBlank(message="Address is required.")
 	private String address;
+	@NotBlank(message="Symptoms is required.")
 	private String symptoms;
 
 	

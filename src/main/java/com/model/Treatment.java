@@ -3,6 +3,7 @@ package com.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 
 
@@ -19,10 +20,10 @@ public class Treatment {
 	@NotBlank(message="This is a required field.")
 	private String description;
 	
-	/*
-	@OneToOne(cascade = CascadeType.ALL)
-	List<Doctor> doctors;
-	*/
+/*	@OneToOne(targetEntity = PatientHistory.class, mappedBy = "treatment")
+	private PatientHistory patienthistory;
+*/	
+	
 /*	
 	@JsonManagedReference(value = "2")
 	@OneToOne(targetEntity = Doctor.class, cascade = CascadeType.ALL)

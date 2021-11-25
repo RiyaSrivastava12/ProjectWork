@@ -3,6 +3,7 @@ package com.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.http.ResponseEntity;
 
@@ -10,9 +11,10 @@ import org.springframework.http.ResponseEntity;
 public class HealthInsurancePolicy {
 	@Id
 	@GeneratedValue
-	
 	private int pNum;
+	@NotBlank(message="Policy Name is required.")
 	private String pName;
+	@NotBlank(message="Policy Term is required.")
 	private double pTerm;
 
 	// getters&Setters
